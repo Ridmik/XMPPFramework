@@ -311,7 +311,7 @@
 
 - (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender roomJID:(nonnull XMPPJID *)roomJID didReceiveInvitationDecline:(nonnull XMPPMessage *)message;
 
-
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didChangeAffiliationIn: (nonnull XMPPJID *) room;
 
 @end
 

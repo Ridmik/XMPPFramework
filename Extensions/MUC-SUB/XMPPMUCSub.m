@@ -634,6 +634,7 @@ static int XMPPIDTrackerTimout = 60;
     
     static NSString *messagesEvent = @"messages";
     static NSString *presenceEvent = @"presence";
+    static NSString *affiliationsEvent = @"affiliations"
     
     NSArray<NSString *> *events = @[messagesEvent, presenceEvent];
     NSString *event = nil;
@@ -664,6 +665,10 @@ static int XMPPIDTrackerTimout = 60;
                 else if ([event isEqualToString:presenceEvent]) {
                     XMPPPresence *p = [XMPPPresence presenceFromElement:(NSXMLElement *)node];
                     [multicastDelegate xmppMUCSub:self didReceivePresence:p];
+                }
+                else if ([event isEqualToString:affiliationsEvent]) {
+                    XMPPJID * roomJID = [message from];
+                    [multicastDelegate xmppMUCSub:self didChangeAffiliationIn:roomJID];
                 }
             }
         }};
