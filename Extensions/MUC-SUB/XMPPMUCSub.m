@@ -667,6 +667,23 @@ static int XMPPIDTrackerTimout = 60;
                 }
             }
         }};
+    } else {
+        NSXMLElement * x = [message elementForName:@"x" xmlns:XMPPMUCUserNamespace];
+        NSXMLElement * invite  = [x elementForName:@"invite"];
+        NSXMLElement * decline = [x elementForName:@"decline"];
+        
+        NSXMLElement * directInvite = [message elementForName:@"x" xmlns:XMPPConferenceXmlns];
+        
+        XMPPJID * roomJID = [message from];
+        
+        if (invite || directInvite)
+        {
+            [multicastDelegate xmppMUCSub:self roomJID:roomJID didReceiveInvitation: message];
+        }
+        else if (decline)
+        {
+            [multicastDelegate xmppMUCSub:self roomJID:roomJID didReceiveInvitationDecline: message];
+        }
     }
     
     if (nil != block) {

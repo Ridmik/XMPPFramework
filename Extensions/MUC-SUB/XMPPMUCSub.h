@@ -306,6 +306,13 @@
 - (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didFailToReceiveSupportedBy:(nonnull XMPPJID *)room
              error:(nonnull NSError *)error;
 
+
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender roomJID:(nonnull XMPPJID *)roomJID didReceiveInvitation:( nonnull XMPPMessage *)message;
+
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender roomJID:(nonnull XMPPJID *)roomJID didReceiveInvitationDecline:(nonnull XMPPMessage *)message;
+
+
+
 @end
 
 #endif /* MUCSub_h */
