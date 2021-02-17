@@ -2095,8 +2095,8 @@
 		926A550F25DD2BD3000A6ACF /* MUC-SUB */ = {
 			isa = PBXGroup;
 			children = (
-				926A551825DD2C33000A6ACF /* XMPPMUCSub.m */,
 				926A552625DD2C51000A6ACF /* XMPPMUCSub.h */,
+				926A551825DD2C33000A6ACF /* XMPPMUCSub.m */,
 			);
 			path = "MUC-SUB";
 			sourceTree = "<group>";

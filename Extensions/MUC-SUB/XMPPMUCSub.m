@@ -181,6 +181,21 @@ static int XMPPIDTrackerTimout = 60;
         NSXMLElement *presence = [NSXMLElement elementWithName:@"event"];
         [presence addAttributeWithName:@"node" stringValue:@"urn:xmpp:mucsub:nodes:presence"];
         
+        NSXMLElement *affiliation = [NSXMLElement elementWithName:@"event"];
+        [affiliation addAttributeWithName:@"node" stringValue:@"urn:xmpp:mucsub:nodes:affiliation"];
+        
+        NSXMLElement *subscribers = [NSXMLElement elementWithName:@"event"];
+        [subscribers addAttributeWithName:@"node" stringValue:@"urn:xmpp:mucsub:nodes:subscribers"];
+        
+        NSXMLElement *config = [NSXMLElement elementWithName:@"event"];
+        [config addAttributeWithName:@"node" stringValue:@"urn:xmpp:mucsub:nodes:config"];
+        
+        NSXMLElement *subject = [NSXMLElement elementWithName:@"event"];
+        [subject addAttributeWithName:@"node" stringValue:@"urn:xmpp:mucsub:nodes:subject"];
+        
+        NSXMLElement *system = [NSXMLElement elementWithName:@"event"];
+        [system addAttributeWithName:@"node" stringValue:@"urn:xmpp:mucsub:nodes:system"];
+        
         
         NSXMLElement *subscribe = [NSXMLElement elementWithName:@"subscribe" xmlns:XMPPMUCSubNamespace];
         [subscribe addAttributeWithName:@"nick" stringValue:usedNick];
@@ -195,6 +210,12 @@ static int XMPPIDTrackerTimout = 60;
 
         [subscribe addChild:messages];
         [subscribe addChild:presence];
+        [subscribe addChild:affiliation];
+        [subscribe addChild:subscribers];
+        [subscribe addChild:config];
+        [subscribe addChild:subject];
+        [subscribe addChild:system];
+
         
         XMPPIQ *iq = [XMPPIQ iqWithType:@"set" elementID:iqId];
         // Current user in from is always correct. Either as self or as moderator.
