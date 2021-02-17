@@ -634,11 +634,11 @@ static int XMPPIDTrackerTimout = 60;
     
     static NSString *messagesEvent = @"messages";
     static NSString *presenceEvent = @"presence";
-    static NSString *affiliationsEvent = @"affiliations"
-    static NSString *subscribersEvent = @"subscribers"
-    static NSString *configEvent = @"config"
-    static NSString *subjectEvent = @"subject"
-    static NSString *systemEvent = @"system"
+    static NSString *affiliationsEvent = @"affiliations";
+    static NSString *subscribersEvent = @"subscribers";
+    static NSString *configEvent = @"config";
+    static NSString *subjectEvent = @"subject";
+    static NSString *systemEvent = @"system";
     
     NSArray<NSString *> *events = @[messagesEvent, presenceEvent, affiliationsEvent,
                                     subscribersEvent, configEvent, subjectEvent, systemEvent];
