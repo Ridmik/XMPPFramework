@@ -313,6 +313,14 @@
 
 - (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didChangeAffiliationIn: (nonnull XMPPJID *) room;
 
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didChangeSubscribersIn: (nonnull XMPPJID *) room;
+
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didChangeConfigurationIn: (nonnull XMPPJID *) room;
+
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didChangeSubjectIn: (nonnull XMPPJID *) room;
+
+- (void)xmppMUCSub:(nonnull XMPPMUCSub *)sender didChangeSystemIn: (nonnull XMPPJID *) room;
+
 @end
 
 #endif /* MUCSub_h */

@@ -635,8 +635,13 @@ static int XMPPIDTrackerTimout = 60;
     static NSString *messagesEvent = @"messages";
     static NSString *presenceEvent = @"presence";
     static NSString *affiliationsEvent = @"affiliations"
+    static NSString *subscribersEvent = @"subscribers"
+    static NSString *configEvent = @"config"
+    static NSString *subjectEvent = @"subject"
+    static NSString *systemEvent = @"system"
     
-    NSArray<NSString *> *events = @[messagesEvent, presenceEvent];
+    NSArray<NSString *> *events = @[messagesEvent, presenceEvent, affiliationsEvent,
+                                    subscribersEvent, configEvent, subjectEvent, systemEvent];
     NSString *event = nil;
     for (event in events) {
         if ((items = [XMPPMUCSub findMUCSubItemsElement:message forEvent:event])) {
@@ -669,6 +674,22 @@ static int XMPPIDTrackerTimout = 60;
                 else if ([event isEqualToString:affiliationsEvent]) {
                     XMPPJID * roomJID = [message from];
                     [multicastDelegate xmppMUCSub:self didChangeAffiliationIn:roomJID];
+                }
+                else if ([event isEqualToString:subscribersEvent]) {
+                    XMPPJID * roomJID = [message from];
+                    [multicastDelegate xmppMUCSub:self didChangeSubscribersIn:roomJID];
+                }
+                else if ([event isEqualToString: configEvent]) {
+                    XMPPJID * roomJID = [message from];
+                    [multicastDelegate xmppMUCSub:self didChangeConfigurationIn: roomJID];
+                }
+                else if ([event isEqualToString: subjectEvent]) {
+                    XMPPJID * roomJID = [message from];
+                    [multicastDelegate xmppMUCSub:self didChangeSubjectIn: roomJID];
+                }
+                else if ([event isEqualToString: systemEvent]) {
+                    XMPPJID * roomJID = [message from];
+                    [multicastDelegate xmppMUCSub:self didChangeSystemIn: roomJID];
                 }
             }
         }};
