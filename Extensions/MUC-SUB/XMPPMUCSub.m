@@ -201,9 +201,8 @@ static int XMPPIDTrackerTimout = 60;
         [subscribe addAttributeWithName:@"nick" stringValue:usedNick];
         
         // Subscribe self or somebody else? If somebody else then JID has to be added to <subscribe>.
-        if (![xmppStream.myJID.bare isEqualToString:user.bare]) {
-            [subscribe addAttributeWithName:@"jid" stringValue:user.bare];
-        }
+        [subscribe addAttributeWithName:@"jid" stringValue:user.bare];
+        
         if (nil != pass) {
             [subscribe addAttributeWithName:@"password" stringValue:pass];
         }
